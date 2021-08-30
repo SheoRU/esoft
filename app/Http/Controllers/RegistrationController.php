@@ -18,18 +18,18 @@ class RegistrationController extends Controller
         }
 
         $validateFields= $request->validate([
-            'login'=>'required',
-            'password'=>'required',
-            'name'=>'required',
-            'lastName'=>'required',
-            'patronymic'=>'required',
+            'login' => 'required',
+            'password' => 'required',
+            'name' => 'required',
+            'lastName' => 'required',
+            'patronymic' => 'required',
 
         ]);
 
         
         if(User::where('login',$validateFields['login'])->exists()){
             return redirect(route('user.registration'))->withErrors([
-                'login'=>'Такой пользователь уже зарегестрирован'
+                'login' => 'Такой пользователь уже зарегестрирован'
             ]);
         }
 

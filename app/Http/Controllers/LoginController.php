@@ -20,14 +20,14 @@ class LoginController extends Controller
         $formFields = $request->only(['login','password']);
 
         $hashedPassword = User::select('password')->where('login','=',$formFields['login'])->first()->password;
-        if(User::where('login','=',$formFields['login'])->count()==0){
+        if(User::where('login','=',$formFields['login'])->count() ==0 ){
             return redirect(route('user.login'))->withErrors([
-                'login'=>'Пользователя с таким логином не существует'
+                'login' => 'Пользователя с таким логином не существует'
             ]);
         }
         if(Hash::check($formFields['password'],$hashedPassword) === false){
             return redirect(route('user.login'))->withErrors([
-                'password'=>'Неверный пароль'
+                'password' => 'Неверный пароль'
             ]);
         }
 
@@ -36,7 +36,7 @@ class LoginController extends Controller
         }
         
         return redirect(route('user.login'))->withErrors([
-            'login'=>'Не удалось авторизоваться'
+            'login' => 'Не удалось авторизоваться'
         ]);
     }
 }

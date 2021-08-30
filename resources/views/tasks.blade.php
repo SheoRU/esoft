@@ -16,6 +16,7 @@
     <body>
     @extends('layouts.taskLayout')
         <h1 style="text-align:center;">Страница задач</h1>
+        <a href = "logout">Выйти</a>
         
     </body>
 </html>
